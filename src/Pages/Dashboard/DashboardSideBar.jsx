@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaShoppingCart, FaBars, FaHome, FaCalendar, FaAd, FaMoneyBill, FaPhone, FaShoppingBag, FaUtensils, FaUser, FaUsers, FaList, FaBook } from 'react-icons/fa';
 import { IoMenuSharp } from 'react-icons/io5';
 import { Link, NavLink } from 'react-router-dom';
+import useAdmin from '../../Hooks/useAdmin';
 
 const DashboardSideBar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -10,7 +11,7 @@ const DashboardSideBar = () => {
         setIsOpen(!isOpen);
     };
 
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
     return (
         <div>
             {/* Menu on Small Screens */}
@@ -34,8 +35,8 @@ const DashboardSideBar = () => {
                                     <FaHome className=' text-xl'></FaHome>Admin Home</NavLink>
                             </li>
                             <li>
-                                <Link to='/dashboard/additems'>
-                                    <FaUtensils className=' text-xl'></FaUtensils> Add Items</Link>
+                                <NavLink to='/dashboard/additems'>
+                                    <FaUtensils className=' text-xl'></FaUtensils> Add Items</NavLink>
                             </li>
                             <li>
                                 <NavLink to='/dashboard/manageitems' activeClassName="active">
@@ -66,7 +67,7 @@ const DashboardSideBar = () => {
                                         <FaShoppingCart className=' text-xl' /> My Cart</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to='/dashboard/mycart'>
+                                    <NavLink to='/dashboard/paymenthistory'>
                                         <FaMoneyBill className=' text-xl'></FaMoneyBill> PYMENT HISTORY</NavLink>
                                 </li>
                                 <li>

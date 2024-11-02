@@ -9,7 +9,7 @@ const useCart = () => {
     const queryClient = useQueryClient();
 
     // Fetch the cart items
-    const { data: cart = [] } = useQuery({
+    const { data: cart = [], refetch } = useQuery({
         queryKey: ['cart', user?.email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/carts?email=${user.email}`);
@@ -28,7 +28,7 @@ const useCart = () => {
         }
     });
 
-    return [cart, deleteMutation.mutateAsync]; // Return both cart and delete mutation
+    return [cart, refetch, deleteMutation.mutateAsync]; // Return both cart and delete mutation
 };
 
 export default useCart;

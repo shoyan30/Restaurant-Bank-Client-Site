@@ -2,6 +2,7 @@ import React from 'react';
 import useCart from '../../../Hooks/useCart';
 import SectionTitles from '../../../Components/SectionTitles';
 import CartTable from './CartTable';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
     const [cart, deleteCartItem] = useCart();  // Now you also have deleteCartItem
@@ -25,7 +26,15 @@ const Cart = () => {
             <div className='flex justify-between px-4 mb-8'>
                 <h2 className='text-3xl font-bold'>Total Item: {cart.length}</h2>
                 <h2 className='text-3xl font-bold'>Total Price: ${totalPrice}</h2>
-                <button className='bg-amber-700 px-4 text-white'>Pay</button>
+
+                {cart.length > 0 && (
+                    <Link to='/dashboard/pay'>
+                        <button className='bg-amber-700 px-4 py-2 text-white rounded-lg hover:bg-amber-800 transition duration-300 ease-in-out'>
+                            Payment
+                        </button>
+                    </Link>
+                )}
+
             </div>
 
             <div className="overflow-x-auto">

@@ -9,9 +9,16 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import { useForm } from 'react-hook-form';
 import AxiosSecure from '../../Hooks/AxiosSecure';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 // import AxiosSecure from '../../Hooks/AxiosSecure';
 
 const Contact = () => {
+
+    <Helmet>
+        <title>
+            Boss Restaurant / Contact
+        </title>
+    </Helmet>
 
     const { user } = useContext(AuthContext);
     const { register, handleSubmit, reset, formState: { errors } } = useForm()
